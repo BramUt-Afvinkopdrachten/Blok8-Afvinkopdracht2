@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Bram Utberg">
+    <title>Afvinkopdracht 2</title>
+</head>
+<body>
+    <form name="input_form" method="post">
+        <label>Search term 1:
+            <input type="text" name="search_term1" value="{{ search_term1 }}">
+        </label>
+        <br>
+        <label>Search term 2:
+            <input type="text" name="search_term2" value="{{ search_term2 }}">
+        </label>
+        <input type="submit" value="Search">
+    </form>
+
+    {% if plot_data %}
+        <img src='data:image/png;base64,{{ plot_data }}' alt="graph"/>
+    {% endif %}
+
+</body>
+</html>
