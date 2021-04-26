@@ -7,6 +7,11 @@ app = Flask(__name__)
 
 @app.route('/', methods=["POST", "GET"])
 def homepage():
+    """
+    Pagina waar twee zoektermen kunnen worden opgegeven, vervolgens
+    wordt per 5 jaar het aantal hits in pubmed in een barplot gezet.
+    :return:
+    """
     template_kwargs = {}
     if request.method == "POST":
         template_kwargs |= {**request.form}
