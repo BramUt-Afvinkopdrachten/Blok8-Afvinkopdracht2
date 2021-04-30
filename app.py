@@ -9,14 +9,19 @@ app = Flask(__name__)
 def homepage():
     """
     Pagina waar twee zoektermen kunnen worden opgegeven, vervolgens
-    wordt per 5 jaar het aantal hits in pubmed in een barplot gezet.
+    wordt per 5 jaar het aantal hits in pubmed in een barplot
+    weergegeven.
     :return:
     """
+
+    # Dictionary met arguments voor de HTML template.
     template_kwargs = {}
     if request.method == "POST":
-        template_kwargs |= {**request.form}
+        # Voegt zoektermen uit request form op zodat deze blijven staan.
+        template_kwargs |= request.form
 
         search_results = {}
+        # Haalt zoektermen uit de request form.
         if term1 := request.form["search_term1"]:
             search_results[term1] = get_article_count_per_year(term1)
         if term2 := request.form["search_term2"]:

@@ -60,12 +60,13 @@ def make_plot(search_results: dict[str, tuple]):
     ax.set_xticks(x)
     ax.set_xticklabels(years)
     fig.autofmt_xdate()
-
     ax.legend()
+
+    # Plot image data.
     buf = BytesIO()
     fig.savefig(buf, format="png")
-    # Embed the result in the html output.
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
+
     return data
 
 
